@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--1.配置实现-->
+<!--    &lt;!&ndash;添加 处理映射器HandlerMapping&ndash;&gt;-->
+<!--    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
+
+<!--    &lt;!&ndash;添加 处理器适配器HandlerAdapter&ndash;&gt;-->
+<!--    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
+
+    <!--2.注解@Controller实现-->
+    <context:component-scan base-package="com.kuang.controller"/>
+
+    <!--不论使用注解还是配置实现，均需要在配置文件中配置视图解析器-->
+    <!--添加 视图解析器ViewResolver-->
+    <!--视图解析器:DispatcherServlet给他的ModelAndView-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/jsp/"/><!--注意末尾有个/，用于拼接mv.setViewName("test");中指定的视图名-->
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!--配置实现需要在配置文件注册bean-->
+    <!--Handler-->
+<!--    <bean id="/t1" class="com.kuang.controller.ControllerTest1"/>-->
+</beans>

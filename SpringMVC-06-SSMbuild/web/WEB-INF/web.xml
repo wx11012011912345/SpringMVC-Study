@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!-- 1.DispatcherServlet-->
+    <servlet>
+        <servlet-name>springMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--通过初始化参数指定SpringMVC配置文件的位置，将DispatcherServlet与其进行关联-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--一定要注意:我们这里加载的是总的配置文件，而不仅仅是spring-mvc.xml， 之前被这里坑了！-->
+            <param-value>classpath:applicationContext.xml</param-value>
+        </init-param>
+        <!-- 启动顺序：值为1-5，数字越小，启动越早；注意：-1，表示启动不执行。（默认值） ；1表示设置 Servlet 随 tomcat 启动而启动-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springMVC</servlet-name>
+        <url-pattern>/</url-pattern><!--用/-->
+    </servlet-mapping>
+
+    <!-- 2.乱码过滤-->
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/*</url-pattern><!--这里是/*-->
+    </filter-mapping>
+
+    <!-- 3.Session超时 默认30min-->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+</web-app>

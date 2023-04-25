@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/mvc
+                https://www.springframework.org/schema/mvc/spring-mvc.xsd
+                http://www.springframework.org/schema/context
+                https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 1.注解驱动：使@RequestMapping注解生效-->
+    <mvc:annotation-driven/>
+    <!--要使用json使用以下配置解决输出到前端乱码问题-->
+<!--    <mvc:annotation-driven>-->
+        <!--解决json输出到前端时乱码问题-->
+<!--        <mvc:message-converters register-defaults="true">-->
+<!--            <bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+<!--                <constructor-arg value="UTF-8"/>-->
+<!--            </bean>-->
+<!--            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+<!--                <property name="objectMapper">-->
+<!--                    <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">-->
+<!--                        <property name="failOnEmptyBeans" value="false"/>-->
+<!--                    </bean>-->
+<!--                </property>-->
+<!--            </bean>-->
+<!--        </mvc:message-converters>-->
+<!--    </mvc:annotation-driven>-->
+
+    <!-- 2.静态资源过滤：让Spring MVC不处理静态资源 比如 .css, .html, .mp3, .js-->
+    <mvc:default-servlet-handler/>
+
+    <!-- 3.扫描包：扫描web层相关的bean(@Controller、@Autowired、@Qualifier)-->
+    <context:component-scan base-package="com.wang.controller"/>
+
+    <!-- 4.视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+</beans>
