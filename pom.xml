@@ -17,6 +17,8 @@
         <module>SpringMVC-05-JSON</module>
         <module>SpringMVC-06-SSMbuild</module>
         <module>SpringMVC-07-AJAX</module>
+        <module>SpringMVC-08-Interceptor</module>
+        <module>SpringMVC-09-FileDownloadAndUpload</module>
     </modules>
 
     <!--由于Maven可能存在资源过滤的问题，我们将配置完善-->

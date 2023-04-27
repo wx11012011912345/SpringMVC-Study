@@ -10,7 +10,7 @@
   <head>
     <title>$Title$</title>
 
-    <script src="${pageContext.request.contextPath}/static/js/jquery-3.6.4.js"></script>
+    <script src="${pageContext.request.contextPath}/statics/js/jquery-3.6.4.js"></script>
 
     <script>
       $.post({

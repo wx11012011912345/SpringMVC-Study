@@ -7,16 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SpringMVC-03-HelloSpringMVC_Annotation" />
+        <module name="SpringMVC-09-FileDownloadAndUpload" />
+        <module name="SpringMVC-08-Interceptor" />
         <module name="SpringMVC-04-Controller" />
         <module name="SpringMVC-05-JSON" />
-        <module name="SpringMVC-07-AJAX" />
+        <module name="SpringMVC-03-HelloSpringMVC_Annotation" />
         <module name="SpringMVC-02-HelloSpringMVC" />
         <module name="SpringMVC-06-SSMbuild" />
         <module name="SpringMVC-01-Servlet" />
+        <module name="SpringMVC-07-AJAX" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Interceptor" target="1.8" />
       <module name="SSMbuild" target="1.8" />
     </bytecodeTargetLevel>
   </component>
