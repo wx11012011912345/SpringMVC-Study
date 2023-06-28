@@ -6,7 +6,7 @@
 <mapper namespace="com.wang.dao.BookMapper">
 
     <!--增加一本书-->
-    <insert id="addBook" parameterType="Books">
+    <insert id="addBook" parameterType="com.wang.pojo.Books">
         insert into books(bookName,bookCounts,detail)
         values(#{bookName},#{bookCounts},#{detail})
     </insert>
